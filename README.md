@@ -7,24 +7,24 @@ An end-to-end reimplementation and evaluation of **Corrective Retrieval-Augmente
 
 ---
 
-## 📊 Key Evaluation Performance Metrics
+## 📊 Key Evaluation Performance Metrics (100% Full Dataset Complete)
 
-Audited against **1,240 queries** from the official PopQA test dataset:
+Evaluated live against **all 1,385 queries** from the official PopQA test benchmark dataset (**100.0% coverage**):
 
-* **PopQA Answer Match Accuracy**: **57.98%** ($\mathbf{+4.08\%}$ over published 2024 CRAG paper's 53.90%).
+* **PopQA Answer Match Accuracy**: **58.63%** ($\mathbf{+4.73\%}$ over published 2024 CRAG paper's 53.90%).
 * **Evaluator Parameter Compression**: **12.8x parameter reduction** (60.5M vs 770M T5-large).
 * **Evaluator Inference Speed**: **~209 ms – 239 ms per passage** on PyTorch CPU.
-* **Dataset Processing Coverage**: **89.53%** (1,240 / 1,385 queries).
-* **External Search Trigger Rate**: **58.23%** (722 / 1,240 queries).
+* **Dataset Processing Coverage**: **100.00%** (1,385 / 1,385 queries).
+* **External Search Trigger Rate**: **57.91%** (802 / 1,385 queries).
 
-### Pathway Breakdown & Pathway Accuracy
+### Pathway Breakdown & Pathway Accuracy (N = 1,385)
 
-| Decision Pathway | Condition / Rule | Queries | % of Processed | Pathway Answer Accuracy |
+| Decision Pathway | Condition / Rule | Queries | % of Dataset | Pathway Answer Accuracy |
 | :--- | :--- | :---: | :---: | :---: |
-| **`CORRECT`** | $\text{MaxScore} \ge +0.5920$ | 518 | 41.77% | **70.08%** |
-| **`AMBIGUOUS`** | $-0.9950 \le \text{MaxScore} < +0.5920$ | 582 | 46.94% | **47.25%** |
-| **`INCORRECT`** | $\text{MaxScore} < -0.9950$ | 140 | 11.29% | **57.86%** |
-| **TOTAL SYSTEM** | — | **1,240** | **100.00%** | **57.98%** |
+| **`CORRECT`** | $\text{MaxScore} \ge +0.5920$ | 583 | 42.09% | **70.50%** |
+| **`AMBIGUOUS`** | $-0.9950 \le \text{MaxScore} < +0.5920$ | 661 | 47.73% | **48.41%** |
+| **`INCORRECT`** | $\text{MaxScore} < -0.9950$ | 141 | 10.18% | **57.45%** |
+| **TOTAL SYSTEM** | — | **1,385** | **100.00%** | **58.63%** |
 
 ---
 
@@ -33,7 +33,7 @@ Audited against **1,240 queries** from the official PopQA test dataset:
 | Component | Original CRAG Paper *(Yan et al., 2024)* | Our Custom CRAG Implementation | Impact |
 | :--- | :---: | :---: | :--- |
 | **Evaluator Model** | `t5-large` (770M params) | **`t5-small` (60.5M params)** | **12.8x Parameter Reduction** |
-| **Generative LLM** | Self-RAG LLaMA-2 7B | **Groq API (`openai/gpt-oss-120b`)** | **+4.08% Accuracy Boost** |
+| **Generative LLM** | Self-RAG LLaMA-2 7B | **Groq API (`openai/gpt-oss-120b`)** | **+4.73% Accuracy Boost** |
 | **Search Engine** | Bing / DuckDuckGo (2023) | **Google Serper API (Live 2026)** | **Cleaner Factual Search Snippets** |
 | **3-Way Controller** | $\gamma_1 = +0.5920, \gamma_2 = -0.9950$ | $\gamma_1 = +0.5920, \gamma_2 = -0.9950$ | **100% Preserved** |
 | **Knowledge Processing** | Decompose $\rightarrow$ Filter $\rightarrow$ Recompose | Decompose $\rightarrow$ Filter $\rightarrow$ Recompose | **100% Preserved** |
@@ -58,10 +58,10 @@ CRAG-CAP/
 ├── results/                              # Research Benchmark Deliverables
 │   ├── final_benchmark/                  # 100-Query benchmark & architectural comparison
 │   └── full_benchmark/                   # Full-dataset PopQA benchmark deliverables
-│       ├── full_popqa_predictions.jsonl  # 1,240 live prediction records
+│       ├── full_popqa_predictions.jsonl  # 1,385 live prediction records (100% complete)
 │       ├── full_popqa_metrics_corrected.json
 │       ├── METRICS_AUDIT.md              # Metrics accounting audit report
-│       ├── POPQA_ANSWER_ACCURACY_AUDIT.md# Audited 57.98% answer accuracy report
+│       ├── POPQA_ANSWER_ACCURACY_AUDIT.md# Audited 58.63% answer accuracy report
 │       ├── FINAL_PROVENANCE_AUDIT.md     # Provenance & API authenticity verification
 │       └── README_EVALUATION_METRICS.md  # Detailed evaluation metrics documentation
 ├── CRAG_repo/                            # Official Reference CRAG Implementation & Data

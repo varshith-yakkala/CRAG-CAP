@@ -1,36 +1,36 @@
-# PopQA Answer Match Accuracy Audit Report
+# PopQA Answer Match Accuracy Audit Report (100% Full Dataset Complete)
 
 **Document**: `results/full_benchmark/POPQA_ANSWER_ACCURACY_AUDIT.md`  
 **Date**: August 20, 2026  
 **Evaluated Artifacts**:
-* [`results/full_benchmark/full_popqa_predictions.jsonl`](file:///c:/Users/varsh/OneDrive/Desktop/2-2/capstone/results/full_benchmark/full_popqa_predictions.jsonl)
+* [`results/full_benchmark/full_popqa_predictions.jsonl`](file:///c:/Users/varsh/OneDrive/Desktop/2-2/capstone/results/full_benchmark/full_popqa_predictions.jsonl) (1,385/1,385 completed prediction records)
 * Ground Truth: Official PopQA Test Dataset (`popqa_longtail_w_gs.jsonl`)
 * Reference Metric Function: `CRAG_repo/scripts/metrics.py` (`match()` and `normalize_answer()`)
 
 ---
 
-## 1. Executive Answer Match Audit Results
+## 1. Executive Answer Match Audit Results (100% Dataset Complete)
 
-Using the official reference CRAG `match()` normalization function, each of the 1,240 generated predictions in `full_popqa_predictions.jsonl` was evaluated against its corresponding ground-truth answer list from the official PopQA test benchmark.
+Using the official reference CRAG `match()` normalization function, all 1,385 generated predictions in `full_popqa_predictions.jsonl` were evaluated against their corresponding ground-truth answer lists from the official PopQA test benchmark split.
 
-### Overall PopQA Answer Accuracy (Denominator = 1,240 Processed Queries):
+### Overall PopQA Answer Accuracy (100% Full Dataset Coverage):
 
-* **Total Processed Queries Evaluated**: **1,240**
-* **Exact Correct Count (`match() == True`)**: **719**
-* **Exact Incorrect Count (`match() == False`)**: **521**
+* **Total Test Dataset Queries Evaluated**: **1,385 / 1,385 (100.00% Coverage)**
+* **Exact Correct Match Count (`match() == True`)**: **812**
+* **Exact Incorrect Match Count (`match() == False`)**: **573**
 * **Unscorable Queries (Missing Gold Answer)**: **0**
-* **Audited PopQA Answer Match Accuracy**: **57.98%** ($\approx \mathbf{58.0\%}$)
+* **Audited 100% PopQA Answer Match Accuracy**: **58.63%** ($\approx \mathbf{58.6\%}$)
 
 ---
 
-## 2. Accuracy Breakdown by CRAG Decision Pathway
+## 2. Accuracy Breakdown by CRAG Decision Pathway (N = 1,385)
 
-| CRAG Decision Pathway | Total Queries | Exact Correct (`match=True`) | Exact Incorrect (`match=False`) | Empty Predictions | Pathway Match Accuracy |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **CORRECT (Internal Knowledge)** | 518 | 363 | 155 | 21 | **70.08%** |
-| **AMBIGUOUS (Combined Knowledge)** | 582 | 275 | 307 | 69 | **47.25%** |
-| **INCORRECT (External Search)** | 140 | 81 | 59 | 8 | **57.86%** |
-| **TOTAL SYSTEM** | **1,240** | **719** | **521** | **98** | **57.98%** |
+| CRAG Decision Pathway | Total Queries | % of Dataset | Exact Correct (`match=True`) | Exact Incorrect (`match=False`) | Empty Predictions | Pathway Match Accuracy |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **CORRECT (Internal Knowledge)** | 583 | 42.09% | 411 | 172 | 24 | **70.50%** |
+| **AMBIGUOUS (Combined Knowledge)** | 661 | 47.73% | 320 | 341 | 80 | **48.41%** |
+| **INCORRECT (External Search)** | 141 | 10.18% | 81 | 60 | 8 | **57.45%** |
+| **TOTAL SYSTEM** | **1,385** | **100.00%** | **812** | **573** | **112** | **58.63%** |
 
 ---
 
@@ -40,14 +40,16 @@ Using the official reference CRAG `match()` normalization function, each of the 
 | :--- | :---: | :---: | :---: |
 | **Standard RAG Baseline** *(Yan et al., 2024)* | None | LLaMA-2 7B | **44.80%** |
 | **Original Published CRAG** *(Yan et al., 2024)* | T5-large (770M) | Self-RAG LLaMA-2 7B | **53.90%** |
-| **Our Custom CRAG Implementation** *(Audited)* | **Our T5-small (60.5M)** | **Groq API (`openai/gpt-oss-120b`)** | **57.98%** ($\mathbf{+4.08\%}$ over paper) |
+| **Our Custom CRAG Implementation** *(Audited 100%)* | **Our T5-small (60.5M)** | **Groq API (`openai/gpt-oss-120b`)** | **58.63%** ($\mathbf{+4.73\%}$ over paper) |
 
 ---
 
-## 4. Full Dataset Effective Accuracy (Denominator = 1,385 Total Benchmark Queries)
+## 4. Latency & External Search Trigger Summary
 
-If the 145 unprocessed queries (due to daily API token caps) are treated as unattempted/incorrect across the full 1,385-query dataset:
-
-* **Full Dataset Effective Accuracy**: $719 / 1385 = \mathbf{51.91\%}$
-* **Processing Coverage**: $1240 / 1385 = \mathbf{89.53\%}$
-* **Failure / Unprocessed Rate**: $145 / 1385 = \mathbf{10.47\%}$
+* **External Search Trigger Rate**: **57.91%** (802 / 1,385 queries)
+* **Mean Pipeline Latency**: **23.770 seconds** (Includes retry backoffs)
+* **Median Pipeline Latency**: **9.897 seconds**
+* **P95 Pipeline Latency**: **81.671 seconds**
+* **Real Groq API Calls**: **1,385 successful calls** (`openai/gpt-oss-120b`)
+* **Real Serper API Calls**: **802 successful search requests** (Google Serper.dev)
+* **Mock Calls**: **0** (`DEBUG_MODE = False`)
