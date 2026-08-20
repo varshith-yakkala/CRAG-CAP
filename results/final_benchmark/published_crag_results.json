@@ -1,0 +1,8 @@
+{
+  "paper": "Corrective Retrieval Augmented Generation (Yan et al., 2024)",
+  "dataset": "PopQA Test Set",
+  "standard_rag_match": 44.8,
+  "original_crag_match": 53.9,
+  "original_evaluator_params": "770M (T5-large)",
+  "original_generator": "Self-RAG LLaMA-2 7B / GPT-3.5"
+}

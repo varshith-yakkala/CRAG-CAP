@@ -1,0 +1,17 @@
+{
+  "number_of_queries": 100,
+  "mean_latency_seconds": 4.4107461643219,
+  "median_latency_seconds": 3.781720519065857,
+  "p95_latency_seconds": 7.232337498664855,
+  "correct_pathway_count": 67,
+  "correct_pathway_pct": 67.0,
+  "ambiguous_pathway_count": 29,
+  "ambiguous_pathway_pct": 28.999999999999996,
+  "incorrect_pathway_count": 4,
+  "incorrect_pathway_pct": 4.0,
+  "external_search_trigger_count": 33,
+  "external_search_trigger_pct": 33.0,
+  "groq_real": true,
+  "serper_real": true,
+  "mock_used": false
+}

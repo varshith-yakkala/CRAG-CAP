@@ -1,0 +1,41 @@
+[
+  {
+    "query": "What is George Rankin's occupation?",
+    "decision": "CORRECT",
+    "max_score": 0.8074893951416016,
+    "upper_threshold": 0.592,
+    "lower_cutoff": -0.995,
+    "eval_scores": [
+      0.8074893951416016
+    ],
+    "final_answer": "George Rankin was a soldier, a politician, and later a farmer.",
+    "rewritten_query": null,
+    "latency_sec": 2.194030284881592
+  },
+  {
+    "query": "In what city was Billy Carlson born?",
+    "decision": "AMBIGUOUS",
+    "max_score": 0.3266681432723999,
+    "upper_threshold": 0.592,
+    "lower_cutoff": -0.995,
+    "eval_scores": [
+      0.3266681432723999
+    ],
+    "final_answer": "Billy Carlson was born in MissionViejo, California.",
+    "rewritten_query": "Billy Carlson birthplace",
+    "latency_sec": 4.345988750457764
+  },
+  {
+    "query": "What is the capital of Australia?",
+    "decision": "AMBIGUOUS",
+    "max_score": -0.9934194320812821,
+    "upper_threshold": 0.592,
+    "lower_cutoff": -0.995,
+    "eval_scores": [
+      -0.9934194320812821
+    ],
+    "final_answer": "Canberra is the capital city of Australia.",
+    "rewritten_query": "capital of Australia",
+    "latency_sec": 3.850861072540283
+  }
+]

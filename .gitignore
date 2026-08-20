@@ -1,0 +1,36 @@
+# Secret Environment Files
+.env
+crag_custom/.env
+*.env
+
+# Large Weights & Model Binaries (> 100MB)
+*.safetensors
+*.bin
+*.pt
+*.zip
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

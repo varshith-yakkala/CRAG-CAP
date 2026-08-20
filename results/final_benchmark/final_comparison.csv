@@ -1,0 +1,13 @@
+Metric,Published CRAG,Original CRAG Reproduction,Our Custom CRAG
+Dataset,PopQA Test,PopQA Test,PopQA Held-Out Test
+Evaluator Model,T5-large (770M),N/A (Checkpoint Unavailable),Our T5-small (60.5M)
+Generator Model,Self-RAG LLaMA-2 7B,N/A,Groq API (openai/gpt-oss-120b)
+Number of Queries,PopQA Full,N/A,100 Benchmark Queries
+PopQA Match Score,53.9%,N/A — Original Checkpoint Unavailable,78.0%
+Mean Latency (s),N/A,N/A,4.411
+Median Latency (s),N/A,N/A,3.782
+P95 Latency (s),N/A,N/A,7.232
+CORRECT Pathway %,N/A,N/A,67.0%
+AMBIGUOUS Pathway %,N/A,N/A,29.0%
+INCORRECT Pathway %,N/A,N/A,4.0%
+External Search Rate,N/A,N/A,33.0%

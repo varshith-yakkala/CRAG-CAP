@@ -1,0 +1,24 @@
+{
+  "evaluator": {
+    "model_path": "c:\\Users\\varsh\\OneDrive\\Desktop\\2-2\\capstone\\t5_evaluator_model\\t5_evaluator_final",
+    "model_class": "T5ForConditionalGeneration",
+    "tokenizer": "google-t5/t5-small",
+    "parameter_count": 60511616,
+    "device": "cpu"
+  },
+  "generator": {
+    "provider": "Groq",
+    "model": "openai/gpt-oss-120b"
+  },
+  "search": {
+    "provider": "Serper",
+    "real_api": true
+  },
+  "crag": {
+    "upper_threshold": 0.592,
+    "lower_cutoff": -0.995,
+    "top_k": 5,
+    "decompose_mode": "selection"
+  },
+  "debug_mode": false
+}
